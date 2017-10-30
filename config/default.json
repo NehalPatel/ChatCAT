@@ -1,0 +1,4 @@
+{
+	"dbURL"	: "mongodb://username:password@ds149433.mlab.com:49433/chatcatdb",
+	"sessionSecret"	: "SECRETKEY"
+}

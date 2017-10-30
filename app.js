@@ -5,11 +5,14 @@ var express = require("express"),
 	session = require('express-session'),
 	config	= require('./config/config.js'),
 	ConnectMongo = require('connect-mongo')(session),
-	mongoose = require('mongoose').connect(config.dbURL);
+	mongoose = require('mongoose');
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
+
+mongoose.Promise = global.Promise;
+mongoose.connect(config.dbURL, {useMongoClient: true});
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
